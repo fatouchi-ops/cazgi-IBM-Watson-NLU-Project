@@ -97,7 +97,7 @@ app.get("/url/emotion", async function(req,res)  {
 });
 
 app.get("/url/sentiment", async function(req,res)  {
-    return await res.send("url sentiment for "+await analyzeSentiemntUrl(req.query.url));
+    return await res.send(+await analyzeSentiemntUrl(req.query.url));
 });
  
 app.get("/text/emotion", async function(req,res)  {
