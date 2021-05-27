@@ -57,7 +57,7 @@ async function analyzeSentiemntText(data) {
 
     let promise = new Promise((resolve, reject) => {
         console.log( "request /text/emotion"+ data);
-        var parameters = { text: data,features : {emotion: {}}}
+        var parameters = { url: data,features : {emotion: {}}}
         ret = nlu.analyze( parameters ) //, function( error, response){
                .then (analysisResults => {
                 resolve(JSON.stringify(analysisResults['result']['emotion']['document']['emotion']));
@@ -97,7 +97,7 @@ app.get("/url/emotion", async function(req,res)  {
 });
 
 app.get("/url/sentiment", async function(req,res)  {
-    return await res.send(+await analyzeSentiemntUrl(req.query.url));
+    return await res.send(await analyzeSentiemntUrl(req.query.url));
 });
  
 app.get("/text/emotion", async function(req,res)  {
